@@ -5,7 +5,7 @@ const { String } = mongoose.Schema.Types
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true, 
+        required: true,
     },
     id: {
         type: String,
@@ -16,11 +16,11 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    number1: {
+    birth: {
         type: String,
         required: true,
     },
-    number2: {
+    sex: {
         type: String,
         required: true,
     },
@@ -34,8 +34,8 @@ const UserSchema = new mongoose.Schema({
         default: 'user',
         enum: ['user', 'admin', 'root']
     },
-    email : {
-        type : String,
+    email: {
+        type: String,
         required: true,
     },
     avatarUrl: {

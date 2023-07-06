@@ -15,7 +15,7 @@ const INIT_USER = {
 }
 
 function Signup() {
-    const [user, setUser] = useState(INIT_USER)
+    const [user, setUser] = useState({})
     const [error, setError] = useState('')
     const [success, setSuccess] = useState(false)
     const [validated, setValidated] = useState(false);
@@ -36,6 +36,7 @@ function Signup() {
         try {
             setError('')
             const response = await axios.post('/api/users/signup', user)
+            console.log(response.data)
             setSuccess(true)
         } catch (error) {
             catchErrors(error, setError)
@@ -65,36 +66,35 @@ function Signup() {
             <Row className="justify-content-center">
                 <Col md={6} xs={10} className="border" style={{ background: '#F7F3F3' }}>
                     <h2 className="text-center pt-3 m-4">Sign Up</h2>
-                    {error && <Alert variant='danger'>{error}</Alert>}
                     <Form
                         noValidate validated={validated}
                         onSubmit={handleSubmit}
                         className="p-4">
                         <Form.Group as={Row} controlId="formBasicName">
-                            <Form.Label column sm="4" for='name'>
+                            <Form.Label column sm="4">
                                 이 름    </Form.Label>
                             <Col sm="8">
                                 <Form.Control
                                     required type="text"
                                     name="name"
-                                    placeholder="Name"
+                                    placeholder="홍길동"
                                     value={user.name}
                                     onChange={handleChange} />
                                 <Form.Control.Feedback type="invalid" >이름을 입력하세요. </Form.Control.Feedback>
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="formBasicNumber">
-                            <Form.Label column sm="4" for='number'>
+                            <Form.Label column sm="4" >
                                 주민등록번호    </Form.Label>
-                            <Row style={{ width: '300px'}} className='px-3'>
+                            <Row style={{ width: '300px' }} className='px-3'>
                                 <Col sm="6" xs='5' className='pr-1'>
                                     <Form.Control
                                         className='pl-2 pr-0'
                                         required type="text"
-                                        name="number1"
-                                        maxlength="6"
-                                        placeholder="생년월일"
-                                        value={user.number1}
+                                        name="birth"
+                                        maxLength="6"
+                                        placeholder="990101"
+                                        value={user.birth}
                                         onChange={handleChange} />
                                     <Form.Control.Feedback type="invalid" >주민등록번호 입력하세요. </Form.Control.Feedback>
                                 </Col>
@@ -103,35 +103,36 @@ function Signup() {
                                     <Form.Control
                                         className='pl-2 pr-0'
                                         required type="text"
-                                        name="number2"
-                                        maxlength="1"
-                                        value={user.number2}
+                                        name="sex"
+                                        placeholder="1"
+                                        maxLength="1"
+                                        value={user.sex}
                                         onChange={handleChange} />
                                 </Col>
                                 <strong className='pt-2 d-flex align-items-flex-start'>* * * * * *</strong>
                             </Row>
                         </Form.Group>
                         <Form.Group as={Row} controlId="formBasicId">
-                            <Form.Label column sm="4" for='id'>
+                            <Form.Label column sm="4" >
                                 아이디    </Form.Label>
                             <Col sm="8">
                                 <Form.Control
                                     required type="text"
                                     name="id"
-                                    placeholder="ID"
+                                    placeholder="아이디"
                                     value={user.id}
                                     onChange={handleChange} />
                                 <Form.Control.Feedback type="invalid" >아이디를 입력하세요. </Form.Control.Feedback>
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="formBasicPassword">
-                            <Form.Label column sm="4" for='password'>
+                            <Form.Label column sm="4" >
                                 비밀번호    </Form.Label>
                             <Col sm="8">
                                 <Form.Control
                                     type="password"
                                     name="password"
-                                    placeholder="Password"
+                                    placeholder="비밀번호"
                                     value={user.password}
                                     required
                                     onChange={handleChange} />
@@ -139,13 +140,13 @@ function Signup() {
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="formBasicPassword2">
-                            <Form.Label column sm="4" for='password'>
+                            <Form.Label column sm="4" >
                                 비밀번호 확인   </Form.Label>
                             <Col sm="8">
                                 <Form.Control
                                     type="password"
                                     name="password2"
-                                    placeholder="Password"
+                                    placeholder="비밀번호 확인"
                                     value={user.password2}
                                     required
                                     onChange={handleChange} />
@@ -153,37 +154,39 @@ function Signup() {
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="formBasicEmail">
-                            <Form.Label column sm="4" for='email'>
+                            <Form.Label column sm="4" >
                                 이메일   </Form.Label>
                             <Col sm="8">
                                 <Form.Control
                                     required type="email"
                                     name="email"
-                                    placeholder="E-mail"
+                                    placeholder="Hong@gmail.com"
                                     value={user.email}
                                     onChange={handleChange} />
                                 <Form.Control.Feedback type="invalid" >이메일을 입력하세요.</Form.Control.Feedback>
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="formBasicTel">
-                            <Form.Label column sm="4" for='tel'>
+                            <Form.Label column sm="4">
                                 휴대전화   </Form.Label>
                             <Col sm="8">
                                 <Form.Control
                                     required type="text"
                                     name="tel"
-                                    placeholder="Telephone"
+                                    placeholder="01012341234"
                                     value={user.tel}
                                     onChange={handleChange} />
                                 <Form.Control.Feedback type="invalid" >휴대전화를 입력하세요.</Form.Control.Feedback>
-                                <Row className='text-end pl-3 mt-1'><small >' - ' 를 함께 입력해주세요^^</small></Row>
+                                <Row className='text-end pl-3 mt-1'><small >' - ' 를 제외하고 입력해주세요.</small></Row>
                             </Col>
                         </Form.Group>
+                        {error && <Alert variant='danger'>{error}</Alert>}
+
                         <Button
                             style={{ background: '#91877F', borderColor: '#91877F', margin: 'auto' }} type="submit" block
                             onClick={checkPassword} >
                             Sign Up
-                            </Button>
+                        </Button>
                     </Form>
                 </Col>
             </Row>

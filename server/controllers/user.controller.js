@@ -30,7 +30,7 @@ const userById = async (req, res, next, id) => {
 }
 
 const signup = async (req, res) => {
-    const { name, number1, number2, id, password, tel, email } = req.body
+    const { name, birth, sex, id, password, tel, email } = req.body
     try {
         if (!isLength(password, { min: 8, max: 15 })) {
             return res.status(422).send('비밀번호는 8-15자리로 입력해주세요.')
@@ -42,8 +42,8 @@ const signup = async (req, res) => {
         const hash = await bcrypt.hash(password, 10)
         const newUser = await new User({
             name,
-            number1,
-            number2,
+            birth,
+            sex,
             id,
             password: hash,
             tel,

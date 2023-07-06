@@ -37,3 +37,13 @@
 이 서비스에서의 핵심 기능은 장바구니 기능 및 카카오페이 구매 기능 입니다.
 
 ## 5. 트러블 슈팅
+
+## 기타
+
+- server
+  port: 3001
+  실행: npm run dev
+
+- client
+  port:
+  실행: npm start
