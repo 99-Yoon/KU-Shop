@@ -45,5 +45,5 @@
   실행: npm run dev
 
 - client
-  port:
+  port: localhost:3000
   실행: npm start

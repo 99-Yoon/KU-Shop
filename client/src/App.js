@@ -46,10 +46,7 @@ function App() {
         <PrivateRoute path="/account">
           <Account />
         </PrivateRoute>
-        {/* <PrivateRoute path='/kakao'>
-          
-        </PrivateRoute>
-        <Route  component={() => { window.location.href = 'https://compmath.korea.ac.kr'; return null; }} /> */}
+
         <Redirect path="/" to="/" />
       </Switch>
     </Router>

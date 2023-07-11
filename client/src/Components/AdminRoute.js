@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { isAdmin } from '../utils/auth';
 
-function PrivateRoute({ path, children }) {
+function AdminRoute({ path, children }) {
   if (isAdmin()) {
     return (
       <Route path={path}>
@@ -17,4 +17,4 @@ function PrivateRoute({ path, children }) {
   }
 }
 
-export default PrivateRoute
+export default AdminRoute
