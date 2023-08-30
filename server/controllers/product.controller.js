@@ -40,21 +40,21 @@ const getToHome = async (req, res) => {
 const getAll = async (req, res) => {
     const per = 9;
     try {
+        // 상품 검색
         if (req.query.product) {
             const productslist = await Product.find({ pro_name: { $regex: new RegExp(req.query.product) } }).sort({ createdAt: -1 })
-            const length = productslist.length
+            const totalCount = productslist.length
             const productPiece = await Product.find({ pro_name: { $regex: new RegExp(req.query.product) } }).sort({ createdAt: -1 }).skip((req.query.page - 1) * per).limit(per)
             if (productslist.length == 0) {
                 res.status(404).send('상품을 찾을 수 없습니다.')
             } else {
-                res.json({productPiece, length})
+                res.json({ productPiece, totalCount })
             }
         } else {
             const productslist = await Product.find({}).sort({ createdAt: -1 })
-            const length = productslist.length
+            const totalCount = productslist.length
             const productPiece = await Product.find({}).sort({ createdAt: -1 }).skip((req.query.page - 1) * per).limit(per)
-            console.log("products=",productPiece)
-            res.json({productPiece, length})
+            res.json({ productPiece, totalCount })
         }
     } catch (error) {
         res.status(500).send('상품을 불러오지 못했습니다.')
@@ -78,7 +78,7 @@ const categoryId = async (req, res, next, category) => {
         if (req.query.product) {
             const productslist = await Product.find({ main_category: category, pro_name: { $regex: new RegExp(req.query.product) } })
             const length = productslist.length
-            const productsPiece = await Product.find({ main_category: category, pro_name: { $regex: new RegExp(req.query.product) } }).skip((req.query.page - 1) * per).limit(per) 
+            const productsPiece = await Product.find({ main_category: category, pro_name: { $regex: new RegExp(req.query.product) } }).skip((req.query.page - 1) * per).limit(per)
             if (productslist.length == 0) {
                 res.status(404).send('상품을 찾을 수 없습니다.')
             } else {

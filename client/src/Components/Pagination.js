@@ -1,8 +1,7 @@
 import { Pagination } from "react-bootstrap";
 import React from 'react';
 
-function Paginations({ index, totalPages, handlePage }) {
-
+function Paginations({ currentPage, totalPages, handlePage }) {
     return (
         <Pagination className="d-flex justify-content-center">
             <style type="text/css">
@@ -33,21 +32,18 @@ function Paginations({ index, totalPages, handlePage }) {
                 `}
             </style>
             <Pagination.First onClick={() => handlePage(1)} />
-            {index === 1 ? <Pagination.Prev disabled /> : <Pagination.Prev onClick={()=>handlePage(index - 1)} />}
-            {index === totalPages && index > 4 ? <Pagination.Item onClick={()=>handlePage(index - 4)}>{index - 4}</Pagination.Item> : ""}
-            {index > 3 && index >= totalPages-1 ? <Pagination.Item onClick={()=>handlePage(index - 3)}>{index - 3}</Pagination.Item> : ""}
-            {index < 3 ? "" : <Pagination.Item onClick={()=>handlePage(index - 2)}>{index - 2}</Pagination.Item>}
-            {index === 1 ? "" : <Pagination.Item onClick={()=>handlePage(index - 1)}>{index - 1}</Pagination.Item>}
-
-            <Pagination.Item active>{index}</Pagination.Item>
-
-            {index === totalPages ? "" : <Pagination.Item onClick={()=>handlePage(index + 1)}>{index + 1}</Pagination.Item>}
-            {index > totalPages-2 ? "" : <Pagination.Item onClick={()=>handlePage(index + 2)}>{index + 2}</Pagination.Item>}
-            {index <= totalPages-3 && index < 3 ? <Pagination.Item onClick={()=>handlePage(index + 3)}>{index + 3}</Pagination.Item> : ""}
-            {index <= totalPages-4 && index < 2 ? <Pagination.Item onClick={()=>handlePage(index + 4)}>{index + 4}</Pagination.Item> : ""}
-            {index === totalPages ? <Pagination.Next disabled /> : <Pagination.Next onClick={()=>handlePage(index + 1)} />}
-
-            <Pagination.Last onClick={() =>handlePage(totalPages)} />
+            {currentPage === 1
+                ? <Pagination.Prev disabled />
+                : <Pagination.Prev onClick={() => handlePage(currentPage - 1)} />}
+            {currentPage > 2 && <Pagination.Item onClick={() => handlePage(currentPage - 2)}>{currentPage - 2}</Pagination.Item>}
+            {currentPage > 1 && <Pagination.Item onClick={() => handlePage(currentPage - 1)}>{currentPage - 1}</Pagination.Item>}
+            <Pagination.Item active>{currentPage}</Pagination.Item>
+            {(totalPages - currentPage) > 0 && <Pagination.Item onClick={() => handlePage(currentPage + 1)}>{currentPage + 1}</Pagination.Item>}
+            {(totalPages - currentPage) > 1 && <Pagination.Item onClick={() => handlePage(currentPage + 2)}>{currentPage + 2}</Pagination.Item>}
+            {totalPages === currentPage
+                ? <Pagination.Next disabled />
+                : <Pagination.Next onClick={() => handlePage(currentPage + 1)} />}
+            <Pagination.Last onClick={() => handlePage(totalPages)} />
         </Pagination>
     )
 }
