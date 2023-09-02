@@ -258,7 +258,7 @@ function ProductsList({ match }) {
                                 detail_imgs: pro.detail_imgUrls
                             }
                         }}>
-                            <ListCard id={pro._id} name={pro.pro_name} price={pro.price} main_img={pro.main_imgUrl} status={'list'}/>
+                            <ListCard id={pro._id} name={pro.pro_name} price={pro.price} main_img={pro.main_imgUrl} status={'list'} />
                         </Link>
                     ))
                     : (
@@ -267,7 +267,7 @@ function ProductsList({ match }) {
                     )
                 }
             </Row>
-            {productlist.length != 0 ? <Pagination index={currentPage} totalPages={Math.ceil(length / per)} handlePage={setCurrentPage} /> : ''}
+            {productlist.length > 0 ? <Pagination currentPage={currentPage} totalPages={Math.ceil(length / per)} handlePage={setCurrentPage} /> : ''}
         </Container>
     )
 }
