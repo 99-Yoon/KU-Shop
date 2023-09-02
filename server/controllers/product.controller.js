@@ -42,17 +42,15 @@ const getAll = async (req, res) => {
     try {
         // 상품 검색
         if (req.query.product) {
-            const productslist = await Product.find({ pro_name: { $regex: new RegExp(req.query.product) } }).sort({ createdAt: -1 })
-            const totalCount = productslist.length
+            const totalCount = await Product.find({ pro_name: { $regex: new RegExp(req.query.product) } }).count()
             const productPiece = await Product.find({ pro_name: { $regex: new RegExp(req.query.product) } }).sort({ createdAt: -1 }).skip((req.query.page - 1) * per).limit(per)
-            if (productslist.length == 0) {
+            if (totalCount == 0) {
                 res.status(404).send('상품을 찾을 수 없습니다.')
             } else {
                 res.json({ productPiece, totalCount })
             }
         } else {
-            const productslist = await Product.find({}).sort({ createdAt: -1 })
-            const totalCount = productslist.length
+            const totalCount = await Product.find({}).count()
             const productPiece = await Product.find({}).sort({ createdAt: -1 }).skip((req.query.page - 1) * per).limit(per)
             res.json({ productPiece, totalCount })
         }
@@ -76,19 +74,17 @@ const categoryId = async (req, res, next, category) => {
     const per = 9;
     try {
         if (req.query.product) {
-            const productslist = await Product.find({ main_category: category, pro_name: { $regex: new RegExp(req.query.product) } })
-            const length = productslist.length
+            const totalCount = await Product.find({ main_category: category, pro_name: { $regex: new RegExp(req.query.product) } }).count()
             const productsPiece = await Product.find({ main_category: category, pro_name: { $regex: new RegExp(req.query.product) } }).skip((req.query.page - 1) * per).limit(per)
-            if (productslist.length == 0) {
+            if (totalCount == 0) {
                 res.status(404).send('상품을 찾을 수 없습니다.')
             } else {
-                req.length = length
+                req.length = totalCount
                 req.productsPiece = productsPiece
             }
         } else {
-            const productslist = await Product.find({ main_category: category })
-            const length = productslist.length
-            req.length = length
+            const totalCount = await Product.find({ main_category: category }).count()
+            req.length = totalCount
             const productsPiece = await Product.find({ main_category: category }).skip((req.query.page - 1) * per).limit(per)
             req.productsPiece = productsPiece
         }
@@ -101,10 +97,9 @@ const categoryId = async (req, res, next, category) => {
 const subname = async (req, res) => {
     const per = 9;
     try {
-        const productslist = await Product.find({ sub_category: req.query.subname })
-        const length = productslist.length
+        const totalCount = await Product.find({ sub_category: req.query.subname }).count()
         const productsPiece = await Product.find({ sub_category: req.query.subname }).skip((req.query.page - 1) * per).limit(per)
-        res.send({ productsPiece, length })
+        res.send({ productsPiece, totalCount })
     } catch (error) {
         res.status(500).send('상품을 불러오지 못했습니다.')
     }

@@ -56,22 +56,6 @@ function Admin() {
         setSearch({ word: event.target.value })
     }
 
-    // async function handleSubmit(e) {
-    //     e.preventDefault()
-    //     try {
-    //         setError('')
-    //         if (currentPage != 1) {
-    //             setCurrentPage(1)
-    //         }
-    //         const response = await axios.get(`/api/product/getproduct/all?product=${search.word}&page=${currentPage}`)
-    //         setProductlist(response.data.productPiece)
-    //         // setLength(response.data.length)
-    //     } catch (error) {
-    //         catchError(error, setError)
-    //     } finally {
-    //         searchref.current.value = ''
-    //     }
-    // }
 
     if (error) {
         alert(`${error}`)
