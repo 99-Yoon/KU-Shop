@@ -33,7 +33,6 @@ const changeCart = async (req, res) => {
 
 const showCart = async (req, res) => {
     try {
-        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         const cart = await Cart.findOne({ userId: req.id }).populate({
             path: 'products.productId',
             model: 'Product'
@@ -41,7 +40,6 @@ const showCart = async (req, res) => {
         res.status(200).json(cart.products)
         console.log("cart-products : ", cart);
     } catch (error) {
-        console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
         console.log(error)
         res.status(500).send('쇼핑카트를 불러오지 못했습니다.')
     }
@@ -70,7 +68,7 @@ const deleteCart2 = async (req, res) => {
     console.log(req.body)
     const { userId, cartId } = req.body
     try {
-        for( let i = 0; i < cartId.length; i++ ){
+        for (let i = 0; i < cartId.length; i++) {
             await Cart.findOneAndUpdate(
                 { userId: userId },
                 { $pull: { products: { _id: cartId[i] } } },
@@ -104,4 +102,4 @@ const userById = async (req, res, next, id) => {
 }
 
 
-export default { addCart, changeCart, showCart, deleteCart,deleteCart2, userById }
+export default { addCart, changeCart, showCart, deleteCart, deleteCart2, userById }
