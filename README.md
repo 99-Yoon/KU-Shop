@@ -32,7 +32,7 @@
 
 ## 3. ERD 설계
 
-![ERD설계도](docs/database.png)
+![ERD설계도](https://github.com/99-Yoon/KU-Shop/blob/636c367017d43d97690936dd9b29986c705a39e3/docs/database.png)
 
 ## 4. 핵심 기능
 
