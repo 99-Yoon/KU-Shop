@@ -32,39 +32,34 @@
 
 ## 3. ERD 설계
 
-![ERD설계도](https://github.com/99-Yoon/KU-Shop/blob/636c367017d43d97690936dd9b29986c705a39e3/docs/database.png)
+![ERD설계도](https://github.com/99-Yoon/KU-Shop/blob/10210b164929215180761d51edc1437657044e06/docs/database.png)
 
 ## 4. 핵심 기능
 
-이 서비스에서의 핵심 기능은 페이지네이션과 장바구니 입니다.
+이 서비스에서의 핵심 기능은 장바구니 기능과 상품추천 기능 입니다.
 
-### 4-1 Pagination
+### 4-1. 장바구니
 
-페이지네이션은 어느 사이트에서든 쓸 수 있는 기본적인 기능임과 동시에 핵심적인 기능입니다.  
-다른 코드들을 참고하지 않고 직접 만들어 보았습니다.  
-페이지네이션 버튼 UI는 react-bootstrap의 Pagination을 사용했습니다.
+장바구니는 사용자가 회원가입을 할 때 사용자마다 한 개씩 만들어집니다. (Cart : User = 1 : 1)  
+사용자는 상품을 바로 구매할 수도 있지만, 상품들을 장바구니에 담은 후 원하는 상품들을 골라 한 번에 구매할 수 있습니다.
 
 <details>
-<summary><b>페이지네이션 설명 펼치기</b></summary>
+<summary><b>장바구니 설명 펼치기</b></summary>
 <div markdown="1">
 
-### 페이지 구성
+### 장바구니(1) - 전체 흐름
 
-한 페이지에 9개의 상품이 들어갈 수 있도록 per의 값을 9로 설정합니다.  
-그리고 상품을 DB에서 front로 불러올 때 모두 불러오는 것이 아닌 9개씩 불러올 수 있도록 skip과 limit를 활용해 주었습니다.
+### 장바구니(2) - frontend 코드 설명
 
-### 페이지네이션 바
-
-react-bootstrap의 Pagination 컴포넌트를 사용했습니다.
-Pagination에는 First, Prev, Item, Next, Last가 있습니다.
+### 장바구니(3) - backend 코드 설명
 
 </div>
 </details>
 
-### 4-2 장바구니
+### 4-2 선호할 만한 상품 추천
 
 <details>
-<summary><b>장바구니 설명 펼치기</b></summary>
+<summary><b>상품 추천 기능 설명 펼치기</b></summary>
 <div markdown="1">
 
 </div>
@@ -72,7 +67,9 @@ Pagination에는 First, Prev, Item, Next, Last가 있습니다.
 
 </br>
 
-## 5. 트러블 슈팅
+## 5. 트러블 슈팅 및 회고
+
+결제기능을 제대로 구현해내지 못한 아쉬움
 
 ## 기타
 
