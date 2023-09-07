@@ -49,7 +49,7 @@
 
 ### 장바구니(1) - 전체 흐름
 
-![장바구니 흐름1](https://github.com/99-Yoon/KU-Shop/blob/2fc1798ec7f8e9e80c9b532b54c64a4b8da59291/docs/shoppingCart%20flow1.png)
+![장바구니 흐름1](https://github.com/99-Yoon/KU-Shop/blob/2fc1798ec7f8e9e80c9b532b54c64a4b8da59291/docs/shoppingCart%20flow1.png)  
 ![장바구니 흐름2](https://github.com/99-Yoon/KU-Shop/blob/2fc1798ec7f8e9e80c9b532b54c64a4b8da59291/docs/shoppingCart%20flow2.png)
 
 ### 장바구니(2) - frontend 코드 설명
