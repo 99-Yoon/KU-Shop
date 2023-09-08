@@ -20,7 +20,6 @@ const changeCart = async (req, res) => {
     console.log(products)
     try {
         const cart = await Cart.findOne({ userId: userId })
-        console.log(cart)
         await Cart.updateOne(
             { _id: cart._id },
             { $set: { products: products } }
@@ -38,7 +37,6 @@ const showCart = async (req, res) => {
             model: 'Product'
         })
         res.status(200).json(cart.products)
-        console.log("cart-products : ", cart);
     } catch (error) {
         console.log(error)
         res.status(500).send('쇼핑카트를 불러오지 못했습니다.')
@@ -79,7 +77,6 @@ const deleteCart2 = async (req, res) => {
             })
         }
         res.send("주문완료 및 쇼핑카트에서 삭제")
-        // res.json(cart)
     } catch (error) {
         console.log(error)
         res.status(500).send('해당 카트를 삭제하지 못했습니다.')

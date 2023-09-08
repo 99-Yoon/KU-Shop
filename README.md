@@ -56,16 +56,16 @@
 
 ![장바구니 Frontend1](https://github.com/99-Yoon/KU-Shop/blob/245af0b840ee6a82fefd0db795548b95ca182353/docs/shoppingCart%20front1.PNG)
 
-원하는 옵션을 선택 후 장바구니 버튼을 누르면 addCart()가 실행됩니다.
-addCart()에서는 axios를 이용하여, 서버의 '/api/cart/addcart' 주소에 userId와 products를 put() 요청합니다.
+원하는 옵션을 선택 후 장바구니 버튼을 누르면 addCart()가 실행됩니다.  
+addCart()에서는 axios를 이용하여, 서버의 '/api/cart/addcart' 주소에 userId와 products를 put() 요청합니다.  
 정상적으로 카트에 담긴 후에는 모달창이 뜨며, 장바구니로 이동 버튼을 누르면 장바구니 페이지로 이동합니다.
 
 ![장바구니 Frontend2](https://github.com/99-Yoon/KU-Shop/blob/245af0b840ee6a82fefd0db795548b95ca182353/docs/shoppingCart%20front2.PNG)
 
-장바구니 페이지에서는 처음 렌더링 할 때 useEffect로 getCart()가 실행됩니다.
-getCart()에서는 axios를 이용하여 서버의 '/api/cart/showcart' 주소에 user(userId)을 param으로 붙여 get() 요청합니다.
-그리고 장바구니에 담긴 여러가지 상품들 중 원하는 것만 체크하여 구매할 수 있도록 checkedCart()함수를 만들었습니다.
-checkedCart()에서는 해당 항목을 checked = true (이미 체크되어 있는 경우엔 false) 로 바꾸고 checked = true인 상품들만 최종 결제 상품 목록으로 취급합니다.
+장바구니 페이지에서는 처음 렌더링 할 때 useEffect로 getCart()가 실행됩니다.  
+getCart()에서는 axios를 이용하여 서버의 '/api/cart/showcart' 주소에 user(userId)을 param으로 붙여 get() 요청합니다.  
+그리고 장바구니에 담긴 여러가지 상품들 중 원하는 것만 체크하여 구매할 수 있도록 checkedCart()함수를 만들었습니다.  
+checkedCart()에서는 해당 항목을 checked = true (이미 체크되어 있는 경우엔 false) 로 바꾸고 checked = true인 상품들만 최종 결제 상품 목록으로 취급합니다.  
 그리고 최종 결제 상품 목록의 가격과 개수를 곱하고 더해서 최종 결제 가격을 표시합니다.
 
 ### (3) 장바구니 - backend 코드 설명
