@@ -47,14 +47,14 @@
 <summary><b>장바구니 설명 펼치기</b></summary>
 <div markdown="1">
 
-### 장바구니(1) - 전체 흐름
+### (1) 장바구니 - 전체 흐름
 
 ![장바구니 흐름1](https://github.com/99-Yoon/KU-Shop/blob/2fc1798ec7f8e9e80c9b532b54c64a4b8da59291/docs/shoppingCart%20flow1.png)  
 ![장바구니 흐름2](https://github.com/99-Yoon/KU-Shop/blob/2fc1798ec7f8e9e80c9b532b54c64a4b8da59291/docs/shoppingCart%20flow2.png)
 
-### 장바구니(2) - frontend 코드 설명
+### (2) 장바구니 - frontend 코드 설명
 
-### 장바구니(3) - backend 코드 설명
+### (3) 장바구니 - backend 코드 설명
 
 </div>
 </details>

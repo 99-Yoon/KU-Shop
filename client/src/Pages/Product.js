@@ -113,20 +113,17 @@ function Product({ match, location }) {
     }
 
     async function addCart(event) {
-        console.log(cart)
         if (cart.length < 1) {
             alert("옵션을 선택해주세요")
         }
         else if (localStorage.getItem('id')) {
             if (event.target.name === "shoppingcart") {
-                // preCart(color, size, count), productId(productlist에서 props), userId(로컬) 를 보내줌
                 try {
                     setError('')
                     const response = await axios.put('/api/cart/addcart', {
                         userId: localStorage.getItem('id'),
                         products: cart
                     })
-                    console.log(response.data)
                     setShow(true)
                 } catch (error) {
                     catchErrors(error, setError)
@@ -248,7 +245,7 @@ function Product({ match, location }) {
                 <Col sm={11} md={8}>
                     <h3 style={{ borderBottom: "1px solid #91877F", paddingBottom: "5px", marginBottom: "1em" }} className="p-3">
                         설명
-                        </h3>
+                    </h3>
                     <Col className='text-center'>
                         <div className='p-2 text-center border' style={{ background: '#CDC5C2', width: '60%', margin: 'auto', fontSize: '3.5vmin' }} >
                             {product.name}
