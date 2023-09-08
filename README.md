@@ -66,9 +66,15 @@ addCart()에서는 axios를 이용하여, 서버의 '/api/cart/addcart' 주소�
 getCart()에서는 axios를 이용하여 서버의 '/api/cart/showcart' 주소에 user(userId)을 param으로 붙여 get() 요청합니다.  
 그리고 장바구니에 담긴 여러가지 상품들 중 원하는 것만 체크하여 구매할 수 있도록 checkedCart()함수를 만들었습니다.  
 checkedCart()에서는 해당 항목을 checked = true (이미 체크되어 있는 경우엔 false) 로 바꾸고 checked = true인 상품들만 최종 결제 상품 목록으로 취급합니다.  
-그리고 최종 결제 상품 목록의 가격과 개수를 곱하고 더해서 최종 결제 가격을 표시합니다.
+또한 최종 결제 상품 목록의 가격과 개수를 곱하고 더해서 최종 결제 가격을 표시합니다.
 
 ### (3) 장바구니 - backend 코드 설명
+
+![장바구니 Backend](https://github.com/99-Yoon/KU-Shop/blob/cc2741d271b7a500b1938de97dac720fade8d2ee/docs/shoppingCart%20back.PNG)
+
+장바구니에 추가하는 함수인 addCart()는 클라이언트에서 온 userId를 통해 Cart Colloection에서 해당 유저의 장바구니를 찾은 후, $push 쿼리를 이용하여 새로운 상품을 추가해줍니다.  
+장바구니를 불러오는 함수인 showCart()의 경우엔 먼저 params를 통해 들어온 userId를 이용하여 userById()에서 DB에 해당 유저의 장바구니가 있는지 확인합니다.
+그 후 해당 유저의 장바구니를 불러오는데, populate()로 Product Collention에서 참조한 정보를 가져옵니다.
 
 </div>
 </details>

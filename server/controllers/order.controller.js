@@ -79,9 +79,7 @@ const recommendPro = async (req, res) => {
                 }
             }
         ])
-        console.log('recommend=', recommend)
         const filteredRecommend = recommend.filter((el) => String(el._id) !== String(productId))
-        console.log('filtering=', filteredRecommend)
         res.json(filteredRecommend)
     } catch (error) {
         console.log('error in order ', error)
