@@ -32,7 +32,7 @@
 
 # 3. ERD 설계
 
-![ERD설계](https://github.com/99-Yoon/KU-Shop/blob/10210b164929215180761d51edc1437657044e06/docs/database.png)
+![ERD설계](https://github.com/99-Yoon/KU-Shop/blob/2981ba426076b2a632b4672c96bca2aca8b75005/docs/images/database.png)
 
 # 4. 핵심 기능
 
@@ -49,18 +49,18 @@
 
 ### (1) 장바구니 - 전체 흐름
 
-<img alt="장바구니 흐름1" src="https://github.com/99-Yoon/KU-Shop/blob/2fc1798ec7f8e9e80c9b532b54c64a4b8da59291/docs/shoppingCart%20flow1.png" width="300px">
-<img alt="장바구니 흐름2" src="https://github.com/99-Yoon/KU-Shop/blob/2fc1798ec7f8e9e80c9b532b54c64a4b8da59291/docs/shoppingCart%20flow2.png" width="300px">
+<img alt="장바구니 흐름1" src="https://github.com/99-Yoon/KU-Shop/blob/2981ba426076b2a632b4672c96bca2aca8b75005/docs/images/shoppingCart%20flow1.png" width="300px">
+<img alt="장바구니 흐름2" src="https://github.com/99-Yoon/KU-Shop/blob/2981ba426076b2a632b4672c96bca2aca8b75005/docs/images/shoppingCart%20flow2.png" width="300px">
 
 ### (2) 장바구니 - frontend 코드 설명
 
-![장바구니 Frontend1](https://github.com/99-Yoon/KU-Shop/blob/245af0b840ee6a82fefd0db795548b95ca182353/docs/shoppingCart%20front1.PNG)
+![장바구니 Frontend1](https://github.com/99-Yoon/KU-Shop/blob/2981ba426076b2a632b4672c96bca2aca8b75005/docs/images/shoppingCart%20front1.PNG)
 
 원하는 옵션을 선택 후 장바구니 버튼을 누르면 addCart()가 실행됩니다.  
 addCart()에서는 axios를 이용하여, 서버의 '/api/cart/addcart' 주소에 userId와 products를 put() 요청합니다.  
 정상적으로 카트에 담긴 후에는 모달창이 뜨며, 장바구니로 이동 버튼을 누르면 장바구니 페이지로 이동합니다.
 
-![장바구니 Frontend2](https://github.com/99-Yoon/KU-Shop/blob/245af0b840ee6a82fefd0db795548b95ca182353/docs/shoppingCart%20front2.PNG)
+![장바구니 Frontend2](https://github.com/99-Yoon/KU-Shop/blob/2981ba426076b2a632b4672c96bca2aca8b75005/docs/images/shoppingCart%20front2.PNG)
 
 장바구니 페이지에서는 처음 렌더링 할 때 useEffect로 getCart()가 실행됩니다.  
 getCart()에서는 axios를 이용하여 서버의 '/api/cart/showcart' 주소에 user(userId)을 param으로 붙여 get() 요청합니다.  
@@ -70,7 +70,7 @@ checkedCart()에서는 해당 항목을 checked = true (이미 체크되어 있�
 
 ### (3) 장바구니 - backend 코드 설명
 
-![장바구니 Backend](https://github.com/99-Yoon/KU-Shop/blob/cc2741d271b7a500b1938de97dac720fade8d2ee/docs/shoppingCart%20back.PNG)
+![장바구니 Backend](https://github.com/99-Yoon/KU-Shop/blob/2981ba426076b2a632b4672c96bca2aca8b75005/docs/images/shoppingCart%20back.PNG)
 
 장바구니에 추가하는 함수인 addCart()는 클라이언트에서 온 userId를 통해 Cart Colloection에서 해당 유저의 장바구니를 찾은 후, $push 쿼리를 이용하여 새로운 상품을 추가해줍니다.  
 장바구니를 불러오는 함수인 showCart()의 경우엔 먼저 params를 통해 들어온 userId를 이용하여 userById()에서 DB에 해당 유저의 장바구니가 있는지 확인합니다.  
@@ -94,7 +94,7 @@ MongoDB의 aggregate()를 사용하여 간단하게 구현해보았습니다.
 MongoDB의 aggregation framework는 파이프라인의 개념을 모델로 합니다.  
 DB에 저장되어 있는 문서들은 파이프라인을 거쳐, 원하는 형태의 문서로 가공될 수 있습니다.
 
-![전체흐름1](https://github.com/99-Yoon/KU-Shop/blob/69e5fcddd87e1a70ad66c8662d59af19d3d8ea0b/docs/recommend%20pipeline1.png)
+![전체흐름1](https://github.com/99-Yoon/KU-Shop/blob/2981ba426076b2a632b4672c96bca2aca8b75005/docs/images/recommend%20pipeline1.png)
 
 #### `$match`
 
@@ -106,7 +106,7 @@ Order에서 현재 보고 있는 상품의 id가 들어있는 것들만 필터�
 배열을 분해하여 배열의 요소에 대한 각각의 문서를 만들어냅니다.  
 products 내에 있는 상품 하나하나에 대한 문서를 각각 만들었습니다.
 
-![전체흐름2](https://github.com/99-Yoon/KU-Shop/blob/69e5fcddd87e1a70ad66c8662d59af19d3d8ea0b/docs/recommend%20pipeline2.png)
+![전체흐름2](https://github.com/99-Yoon/KU-Shop/blob/2981ba426076b2a632b4672c96bca2aca8b75005/docs/images/recommend%20pipeline2.png)
 
 #### `$group`
 
@@ -123,7 +123,7 @@ products 내에 있는 상품 하나하나에 대한 문서를 각각 만들었�
 파이프라인의 다음 단계로 전달되는 문서의 수를 제한합니다.  
 4개의 상품을 추천하기 위해 현재 보고 있는 상품까지 포함하여 5개로 제한했습니다.
 
-![전체흐름3](https://github.com/99-Yoon/KU-Shop/blob/69e5fcddd87e1a70ad66c8662d59af19d3d8ea0b/docs/recommend%20pipeline3.png)
+![전체흐름3](https://github.com/99-Yoon/KU-Shop/blob/2981ba426076b2a632b4672c96bca2aca8b75005/docs/images/recommend%20pipeline3.png)
 
 #### `$lookup`
 
@@ -137,7 +137,7 @@ Product 컬렉션에서 \_id가 일치하는 문서를 가져와 새로운 필�
 
 ### (2) 상품 추천 - 적용
 
-![상품추천 UI](https://github.com/99-Yoon/KU-Shop/blob/b4c77f6ce73dc649ae7d6943310aec1cc7de63cc/docs/recommend%20client.png)
+![상품추천 UI](https://github.com/99-Yoon/KU-Shop/blob/2981ba426076b2a632b4672c96bca2aca8b75005/docs/images/recommend%20client.png)
 
 상품 상세페이지에 접속하면 바로 아래 '회원님이 선호하실 만한 상품'이라는 제목으로 추천 상품이 뜨게 됩니다.  
 추천 상품을 클릭하면 해당 상품의 상세페이지로 바로 이동합니다.
@@ -149,7 +149,14 @@ Product 컬렉션에서 \_id가 일치하는 문서를 가져와 새로운 필�
 
 # 5. 트러블 슈팅 및 회고
 
-결제기능을 제대로 구현해내지 못한 아쉬움
+## 5-1. 결제하기 전 DB에 들어가는 현상
+
+카카오페이 결제의 경우, 카카오페이 자체 url에서 redirect_url로 넘어가기 때문에 결제 정보는 전달 가능하지만, 주문 정보는 전달할 수 없다는 치명적인 단점이 존재합니다.  
+따라서 현 개발 단계에서는 결제가 정상적으로 완료되었다는 가정 하에 DB에 정보를 넣고 있습니다.  
+하지만 이는 결제가 정상적으로 완료되지 않았을 경우에 문제가 생길 수 있습니다.  
+따라서 결제 정보와 주문정보를 따로 관리하는 Collection이 필요합니다.
+
+<br/>
 
 # 기타
 
