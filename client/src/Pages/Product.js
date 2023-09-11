@@ -38,6 +38,7 @@ function Product({ match, location }) {
     async function getRecommend() {
         try {
             const response = await axios.get(`/api/order/recommend?products=${product.id}`)
+            console.log(response.data)
             setProductList(response.data)
         } catch (error) {
             catchErrors(error, setError)
@@ -268,12 +269,12 @@ function Product({ match, location }) {
                     </Col>
                 </Col>
             </Row>
-            <Row className="justify-content-center mx-0 pt-3 px-2" style={{ position: "fixed", bottom: "0", width: "100%", backgroundColor: "#fff" }}>
+            <Row className="justify-content-center mx-0 py-3 px-2" style={{ position: "fixed", bottom: "0", width: "100%", backgroundColor: "#fff" }}>
                 <Col sm={12} md={9}>
                     <h6 style={{ borderBottom: "1px solid", paddingBottom: "5px", marginBottom: "1em" }}>회원님이 선호할만한 상품 추천
                         <a className="close float-right" onClick={(e) => handleClick(e)} style={{ fontSize: "1rem", cursor: "pointer" }}>X</a>
                     </h6>
-                    <Row className="justify-content-lg-center mx-auto" style={{ flexWrap: "nowrap", width: "100%", overflowX: "auto" }}>
+                    <Row className="justify-content-lg-center mx-auto " style={{ flexWrap: "nowrap", width: "100%", overflowX: "auto" }}>
                         {productList.map(pro => (
                             <Link to={{
                                 pathname: `/product/${pro._id}`,

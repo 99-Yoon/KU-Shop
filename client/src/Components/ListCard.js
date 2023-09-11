@@ -16,10 +16,10 @@ function ListCard(props) {
     } else if (props.status === 'recommend') {
         return (
             <Card id={props.id} className="mx-2" style={{ width: "10rem" }}>
-                <Card.Img variant="top" src={props.main_img && `/images/${props.main_img}`} style={{ objectFit: "contain" }} />
+                <Card.Img variant="top" src={props.main_img && `/images/${props.main_img}`} style={{ objectFit: "contain", maxHeight: "10rem" }} />
                 <Card.Body className="px-2">
-                    <Card.Title style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{props.name}</Card.Title>
-                    <Card.Text>{props.price} 원</Card.Text>
+                    <Card.Title className='h6' style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{props.name}</Card.Title>
+                    <Card.Text className='h6'>{props.price} 원</Card.Text>
                 </Card.Body>
             </Card>
         )
@@ -33,28 +33,28 @@ function ListCard(props) {
                             {e.products.length > 1 ?
                                 <Card.Header className="font-weight-bold mb-3 text-center" style={{ background: '#F7F3F3' }}>
                                     {e.products[0].productId.pro_name} 외 {e.products.length - 1}개
-                                    </Card.Header>
+                                </Card.Header>
                                 : (
                                     <Card.Header className="font-weight-bold mb-3 text-center" style={{ background: '#F7F3F3' }}>
                                         {e.products[0].productId.pro_name}
                                     </Card.Header>)}
                             <Card.Text>
-                            <Col className='justify-content-center'>
-                                <Row className='justify-content-center' >
-                                    <>
-                                        <Col sm={3} xs={5} className='p-1'><li>주문번호 :</li></Col>
-                                        <Col sm={8} xs={6} className='p-1'><strong>{e._id}</strong></Col>
-                                    </>
-                                    <Col sm={3} xs={5} className='p-1'><li>결제금액 :</li></Col>
-                                    <Col sm={8} xs={6} className='p-1'><strong>{e.total}원</strong></Col>
+                                <Col className='justify-content-center'>
+                                    <Row className='justify-content-center' >
+                                        <>
+                                            <Col sm={3} xs={5} className='p-1'><li>주문번호 :</li></Col>
+                                            <Col sm={8} xs={6} className='p-1'><strong>{e._id}</strong></Col>
+                                        </>
+                                        <Col sm={3} xs={5} className='p-1'><li>결제금액 :</li></Col>
+                                        <Col sm={8} xs={6} className='p-1'><strong>{e.total}원</strong></Col>
 
-                                    <Col sm={3} xs={5} className='p-1'><li>배송지 :</li></Col>
-                                    <Col sm={8} xs={6} className='p-1'><strong> {e.receiverInfo.address}</strong> <br />( {e.receiverInfo.address2} )</Col>
+                                        <Col sm={3} xs={5} className='p-1'><li>배송지 :</li></Col>
+                                        <Col sm={8} xs={6} className='p-1'><strong> {e.receiverInfo.address}</strong> <br />( {e.receiverInfo.address2} )</Col>
 
-                                    <Col sm={3} xs={5} className='p-1'><li>주문날짜 :</li></Col>
-                                    <Col sm={8} xs={6} className='p-1'><strong>{e.createdAt.substring(0, 10)}</strong></Col>
-                                </Row>
-                            </Col>
+                                        <Col sm={3} xs={5} className='p-1'><li>주문날짜 :</li></Col>
+                                        <Col sm={8} xs={6} className='p-1'><strong>{e.createdAt.substring(0, 10)}</strong></Col>
+                                    </Row>
+                                </Col>
                             </Card.Text>
                         </Card.Body>
                     )
